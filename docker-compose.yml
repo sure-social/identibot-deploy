@@ -1,0 +1,13 @@
+#!/bin/bash
+
+version: '3.5'
+
+services:
+
+    #/================================================================/#
+    identibot:
+        container_name: identibot
+        image: gamercert/identibot
+        restart: unless-stopped
+        volumes:
+            - ./volume-identibot:/app/volume
