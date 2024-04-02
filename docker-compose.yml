@@ -2,12 +2,26 @@
 
 version: '3.5'
 
+networks:
+    t2_proxy:
+        external:
+            name: t2_proxy
+    socket_proxy:
+        external:
+            name: socket_proxy
+    default:
+        driver: bridge
+
 services:
 
     #/================================================================/#
     identibot:
-        container_name: identibot
-        image: gamercert/identibot
+        container_name: identibot-js
+        image: fallguydev/identibot-js
         restart: unless-stopped
+        networks:
+            - t2_proxy
+            - socket_proxy
         volumes:
             - ./volume-identibot:/app/volume
+
